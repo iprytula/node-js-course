@@ -1,0 +1,13 @@
+<%- include('templates/header.ejs') %>
+  <ul>
+    <% products.forEach(product=> { %>
+      <li>
+        <h2>
+          <%= product.name %>
+        </h2>
+        <p>
+          <%= product.price %>
+        </p>
+      </li>
+      <% }) %>
+  </ul>
