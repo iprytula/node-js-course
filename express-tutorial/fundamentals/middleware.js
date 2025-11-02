@@ -4,7 +4,7 @@ const app = express();
 //define middleware function
 
 const myFirstMiddleware = (req, res, next) => {
-  console.log("Middleware is running on every request");
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
   next();
 };
 
