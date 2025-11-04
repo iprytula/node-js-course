@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
+const fs = require("fs");
+const config = JSON.parse(fs.readFileSync("../config.json"));
 
 mongoose
-  .connect(
-    "mongodb+srv://iprytula_db_user:mongodbbasics2025@cluster0.suowwiv.mongodb.net/"
-  )
+  .connect(config.MONGO_URL)
   .then(() => {
     console.log("Connected to MongoDB");
   })
