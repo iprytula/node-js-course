@@ -16,33 +16,57 @@ const controller = {
   },
   getBookById: async (req, res) => {
     const book = await Book.findById(req.params.id);
-    res.status(StatusCodes.OK).send({
-      message: "Book found successfully",
-      book,
-    });
+    if (!book) {
+      res.status(StatusCodes.NOT_FOUND).send({
+        message: "Book not found",
+      });
+    } else {
+      res.status(StatusCodes.OK).send({
+        message: "Book found successfully",
+        book,
+      });
+    }
   },
   createBook: async (req, res) => {
     const createdBook = await Book.create(req.body);
-    res.status(StatusCodes.CREATED).send({
-      message: "Book created successfully",
-      book: createdBook,
-    });
+    if (!createdBook) {
+      res.status(StatusCodes.BAD_REQUEST).send({
+        message: "Book not created",
+      });
+    } else {
+      res.status(StatusCodes.CREATED).send({
+        message: "Book created successfully",
+        book: createdBook,
+      });
+    }
   },
   updateBook: async (req, res) => {
     const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    res.status(StatusCodes.OK).send({
-      message: "Book updated successfully",
-      book: updatedBook,
-    });
+    if (!updatedBook) {
+      res.status(StatusCodes.BAD_REQUEST).send({
+        message: "Book not updated",
+      });
+    } else {
+      res.status(StatusCodes.OK).send({
+        message: "Book updated successfully",
+        book: updatedBook,
+      });
+    }
   },
   deleteBook: async (req, res) => {
     const deletedBook = await Book.findByIdAndDelete(req.params.id);
-    res.status(StatusCodes.OK).send({
-      message: "Book deleted successfully",
-      book: deletedBook,
-    });
+    if (!deletedBook) {
+      res.status(StatusCodes.BAD_REQUEST).send({
+        message: "Book not deleted",
+      });
+    } else {
+      res.status(StatusCodes.OK).send({
+        message: "Book deleted successfully",
+        book: deletedBook,
+      });
+    }
   },
 };
 
