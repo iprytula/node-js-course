@@ -1,6 +1,7 @@
-const express = require("express");
-const router = express.Router();
-const controller = require("../controllers/book-controller");
+import express, { Router } from "express";
+import * as controller from "../controllers/book-controller";
+
+const router: Router = express.Router();
 
 router.get("/", controller.getBooks);
 
@@ -12,4 +13,4 @@ router.put("/:id", controller.updateBook);
 
 router.delete("/:id", controller.deleteBook);
 
-module.exports = router;
+export default router;
