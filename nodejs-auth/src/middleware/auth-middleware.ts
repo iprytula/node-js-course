@@ -12,9 +12,11 @@ declare global {
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const token = req.cookies?.token || req.headers.authorization?.split(" ")[1];
+  const decodedToken = jwt.verify(token, process.env.JWT_SECRET || "secret-key") as JwtPayload & { role: string };
+  req.userInfo = decodedToken;
 
-  if (!token) {
-    return res.status(StatusCodes.UNAUTHORIZED).json({
+  if (!token || decodedToken.role === "admin") {
+    res.status(StatusCodes.UNAUTHORIZED).json({
       message: "Unauthorized"
     });
   }

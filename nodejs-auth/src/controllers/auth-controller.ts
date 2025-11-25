@@ -3,7 +3,6 @@ import User, { IUser } from "../models/User";
 import { StatusCodes } from "http-status-codes";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { JwtPayload } from "jsonwebtoken";
 
 interface RegisterRequest extends Request {
   body: {
@@ -20,12 +19,6 @@ interface LoginRequest extends Request {
     email?: string;
     password: string;
   };
-}
-
-interface AuthenticationRequest extends Request {
-  body: {
-    token: string;
-  }
 }
 
 interface AuthResponse extends Response {
@@ -61,7 +54,7 @@ const registerUser = async (req: RegisterRequest, res: AuthResponse) => {
     });
 
     const userResponse = {
-      _id: newUser._id,
+      id: newUser._id,
       username: newUser.username,
       email: newUser.email,
       role: newUser.role,
