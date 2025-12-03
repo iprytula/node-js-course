@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "dev": "ts-node-dev --respawn --transpile-only --no-notify --inspect=0.0.0.0:9229 src/server.ts --NODE_ENV development",
+    "dev": "ts-node-dev --respawn --transpile-only --no-notify --inspect=0.0.0.0:9229 src/server.ts --NODE_ENV=development",
     "start": "node -r dotenv/config dist/server.js"
   },
   "keywords": [],
