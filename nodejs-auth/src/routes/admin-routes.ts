@@ -3,7 +3,7 @@ import express, { Request, Response } from "express";
 
 const adminRouter = express.Router();
 
-adminRouter.get("/", authMiddleware, (req: Request, res: Response) => {
+adminRouter.get("/", (req: Request, res: Response) => {
   res.json({
     message: "Welcome to Admin Dashboard"
   });
