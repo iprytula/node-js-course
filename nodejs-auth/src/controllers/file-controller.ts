@@ -9,7 +9,7 @@ interface UploadImageRequest extends Request {
   userInfo?: JwtPayload & { id: string; role: string };
 }
 
-const uploadFile = async (req: UploadImageRequest, res: Response): Promise<Response> => {
+const uploadImage = async (req: UploadImageRequest, res: Response): Promise<Response> => {
   try {
     if (!req.file) {
       return res.status(StatusCodes.BAD_REQUEST).json({
@@ -66,4 +66,4 @@ const deleteImage = async (req: Request, res: Response): Promise<Response> => {
   }
 }
 
-export { uploadFile, deleteImage };
+export { uploadImage, deleteImage };
