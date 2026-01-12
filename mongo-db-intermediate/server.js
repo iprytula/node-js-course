@@ -2,6 +2,7 @@ import expres from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import productRoutes from './routes/product-routes.js';
+import bookRoutes from './routes/book-routes.js';
 
 dotenv.config();
 const MONGO_URI = process.env.MONGO_URI;
@@ -23,3 +24,4 @@ app.listen(PORT, () => {
 app.use(expres.json());
 
 app.use('/api/products', productRoutes);
+app.use('/api/books', bookRoutes);
