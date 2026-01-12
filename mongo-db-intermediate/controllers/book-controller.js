@@ -21,4 +21,14 @@ const createBook = async (req, res) => {
   }
 };
 
-export { createAuthor, createBook };
+const getBookWithAuthor = async (req, res) => {
+  try {
+    const bookId = req.params.id;
+    const book = await Book.findById(bookId).populate('author');
+    res.status(200).json({ success: true, data: book });
+  } catch (error) {
+    res.status(500).json({ success: false, error });
+  }
+};
+
+export { createAuthor, createBook, getBookWithAuthor };
