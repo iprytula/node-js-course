@@ -1,4 +1,3 @@
-import e from "express";
 import { Author } from "../models/Author.js";
 import { Book } from "../models/Book.js";
 
