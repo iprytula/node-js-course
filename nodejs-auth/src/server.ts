@@ -5,8 +5,10 @@ import cookieParser from "cookie-parser";
 import express from "express";
 import connectDB from "./database/database-connection";
 import authRoutes from "./routes/auth-routes";
-import homeRouter from "./routes/home-routes";
 import adminRouter from "./routes/admin-routes";
+import fileRouter from "./routes/file-routes";
+import authMiddleware from "./middleware/auth-middleware";
+import uploadMiddleware from "./middleware/uppload-middleware";
 
 
 const app = express();
@@ -18,9 +20,9 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
-app.use("/home", homeRouter);
-app.use("/admin", adminRouter)
+app.use("/admin", authMiddleware, adminRouter);
+app.use("/api/files", authMiddleware, uploadMiddleware.single("image"), fileRouter);
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
-});
+}); 
