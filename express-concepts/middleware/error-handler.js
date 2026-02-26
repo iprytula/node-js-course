@@ -1,4 +1,4 @@
-class APIError extends Error {
+export class APIError extends Error {
   constructor(message, statusCode) {
     super(message);
     this.statusCode = statusCode;
@@ -14,11 +14,13 @@ export const globalErrorHandler = (err, req, res, next) => {
   console.error(err);
   if (err instanceof APIError) {
     res.status(err.statusCode).json({
+      success: false,
       status: err.status,
       message: err.message,
     });
   } else {
     res.status(500).json({
+      success: false,
       status: "error",
       message: "Internal server error",
     });
