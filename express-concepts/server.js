@@ -3,7 +3,7 @@ import { configDotenv } from "dotenv";
 import { configureCors } from "./config/cors-config.js";
 import { requestLogger } from "./middleware/request-logger.js";
 import { globalErrorHandler } from "./middleware/error-handler.js";
-import { urlVersioning, headerVersioning, contentTypeVersioning } from "./middleware/api-versioning.js";
+import { urlVersioning } from "./middleware/api-versioning.js";
 import { createRateLimiter } from "./middleware/rate-limiting.js";
 import itemRoutes from "./routes/item-routes.js";
 

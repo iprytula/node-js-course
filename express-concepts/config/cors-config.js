@@ -8,15 +8,15 @@ export const configureCors = () =>
         "https://my-frontend-domain.com",
       ]; // List of allowed origins
       if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
+        callback(null, true); // Allow requests from allowed origins or if no origin is provided (e.g., for server-to-server requests)
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     }, // Function to check if the origin is allowed
     methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-    allowedHeaders: ["Content-Type", "Content-Range"], // Allowed headers
+    allowedHeaders: ["Content-Type", "Content-Range", "Authorization", "Accept-Version"], // Allowed headers
     credentials: true, // Allow cookies to be sent with requests
     preflightContinue: false, // Pass the CORS preflight response to the next handler
     optionsSuccessStatus: 204, // Status code for successful OPTIONS requests
-    maxAge: 600, // Cache preflight response for 24 hours
+    maxAge: 600, // Cache preflight response for 10 minutes
   });
