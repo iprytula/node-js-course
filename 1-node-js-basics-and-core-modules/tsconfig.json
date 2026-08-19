@@ -20,6 +20,7 @@
     "strict": true,                                    /* Turn on all strict type-checking flags */
     "noImplicitAny": true,                             /* Error out on implied 'any' types */
     "strictNullChecks": true,                          /* Null/undefined checking validation */
+    "types": ["node"],
 
     /* Optimizations */
     "skipLibCheck": true                               /* Skip checking type definitions inside node_modules */
