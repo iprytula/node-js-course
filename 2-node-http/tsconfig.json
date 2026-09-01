@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    /* Target & Environment */
+    "target": "ES2022",                                /* Set modern JavaScript output */
+    "module": "NodeNext",                              /* Match Node.js native module system */
+    "moduleResolution": "NodeNext",                    /* Use Node.js module resolution strategy */
+    "lib": ["ES2022"],                                /* Inject modern JS library declarations */
+
+    /* Output & Structure */
+    "rootDir": "./src",                                /* Locate the TypeScript source files */
+    "outDir": "./dist",                                /* Direct compiled JS files here */
+    "sourceMap": true,                                 /* Generate source maps for debugging */
+    "removeComments": true,                            /* Strip comments from output files */
+
+    /* Interoperability & Rules */
+    "esModuleInterop": true,                           /* Support default imports from CommonJS modules */
+    "forceConsistentCasingInFileNames": true,          /* Block mismatched file casing imports */
+
+    /* Strict Type-Checking */
+    "strict": true,                                    /* Turn on all strict type-checking flags */
+    "noImplicitAny": true,                             /* Error out on implied 'any' types */
+    "strictNullChecks": true,                          /* Null/undefined checking validation */
+    "types": ["node"],
+
+    /* Optimizations */
+    "skipLibCheck": true                               /* Skip checking type definitions inside node_modules */
+  },
+  "include": ["src/**/*"],                             /* Compile all files inside the source directory */
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"]  /* Prevent compilation of dependencies and tests */
+}
