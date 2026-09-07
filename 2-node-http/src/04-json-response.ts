@@ -45,6 +45,7 @@ const server = http.createServer(
           routes: ["GET/users"],
         },
       });
+      return;
     }
 
     if (method === "GET" && pathName === "/users") {
@@ -53,13 +54,15 @@ const server = http.createServer(
         message: "users fetched successfully",
         data: users,
       });
+      return;
     }
 
     sendJSON(res, 404, {
       success: false,
       message: "Route not found",
-      error: `pathname: '${pathName}' does not exist`
-    })
+      error: `pathname: '${pathName}' does not exist`,
+    });
+    return;
   },
 );
 
