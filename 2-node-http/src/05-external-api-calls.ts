@@ -16,15 +16,14 @@ interface PublicUser {
   company: string;
 }
 
-
 const transformUser = (rawData: PlaceholderUser): PublicUser => {
   return {
     id: rawData.id,
     name: rawData.name,
     email: rawData.email,
-    company: rawData.company.name
-  }
-}
+    company: rawData.company.name,
+  };
+};
 
 const fetchExternalUser = async (): Promise<void> => {
   const controller = new AbortController();
@@ -36,7 +35,7 @@ const fetchExternalUser = async (): Promise<void> => {
   try {
     const response = await fetch(API_URL, {
       method: "GET",
-      signal: controller.signal
+      signal: controller.signal,
     });
 
     if (!response.ok) {
@@ -47,7 +46,7 @@ const fetchExternalUser = async (): Promise<void> => {
     const rawUser = (await response.json()) as PlaceholderUser;
     const user = transformUser(rawUser);
 
-    console.log(user)
+    console.log(user);
   } catch (error) {
     if (error instanceof Error && error.name === "AbortError") {
       console.error("request failed due API response took too long");
@@ -59,6 +58,6 @@ const fetchExternalUser = async (): Promise<void> => {
   } finally {
     clearTimeout(timeout);
   }
-}
+};
 
 fetchExternalUser();
