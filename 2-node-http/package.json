@@ -9,7 +9,8 @@
     "dev": "tsx watch src/index.ts",
     "01": "tsx watch src/01-basic-http-server.ts",
     "02": "tsx watch src/02-routing.ts",
-    "03": "tsx watch src/03-reading-body.ts"
+    "03": "tsx watch src/03-reading-body.ts",
+    "04": "tsx watch src/04-json-response.ts"
   },
   "devDependencies": {
     "@types/node": "^26.4.0",
