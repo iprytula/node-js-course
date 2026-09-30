@@ -14,6 +14,7 @@ VALUES
 
 -- SELECT * FROM basics.sales;
 
+-- THIS SHOULD GIVE AN ERROR
 INSERT INTO basics.sales (id, title, price)
 VALUES
   (1, 'Sale 3', 200);
