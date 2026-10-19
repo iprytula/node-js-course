@@ -1,1 +1,0 @@
-CREATE DATABASE postgres_part_1;
